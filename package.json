@@ -35,7 +35,7 @@
     "dev": "rollup -c -w",
     "minify": "terser dist/sunburst-chart.js -o dist/sunburst-chart.min.js -c -m --comments '/Version/'",
     "build-module": "rollup -c rollup.config.module.js",
-    "prepare": "npm run build && npm run minify && npm run build-module"
+    "prepare": "npm run start && npm run minify && npm run build-module"
   },
   "dependencies": {
     "accessor-fn": "^1.2.2",
