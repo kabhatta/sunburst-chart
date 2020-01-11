@@ -1,0 +1,270 @@
+{
+    "name": "Mojo Model",
+    "color": "#A81961",
+    "children": [
+        {
+            "name": "About You",
+            "color": "#2f3eca",
+            "children": [
+                {
+                    "name": "Initiate",
+                    "color": "#6462db",
+                    "children": [
+                        {
+                            "name": "Describe",
+                            "size": 1,
+                            "color": "#9896ec"
+                        },
+                        {
+                            "name": "Evaluate",
+                            "size": 1,
+                            "color": "#9896ec"
+                        },
+                        {
+                            "name": "Ask",
+                            "size": 1,
+                            "color": "#9896ec"
+                        },
+                        {
+                            "name": "Explain",
+                            "size": 1,
+                            "color": "#9896ec"
+                        },
+                        {
+                            "name": "Complain",
+                            "size": 1,
+                            "color": "#9896ec"
+                        }
+                    ]
+                },
+                {
+                    "name": "Respond",
+                    "color": "#6462db",
+                    "children": [
+                        {
+                            "name": "Listen",
+                            "size": 1,
+                            "color": "#9896ec"
+                        },
+                        {
+                            "name": "Talk",
+                            "size": 1,
+                            "color": "#9896ec"
+                        }
+                    ]
+                },
+                {
+                    "name": "Engage",
+                    "color": "#6462db",
+                    "children": [
+                        {
+                            "name": "Voice",
+                            "size": 1,
+                            "color": "#9896ec"
+                        },
+                        {
+                            "name": "Body",
+                            "size": 1,
+                            "color": "#9896ec"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "You & I",
+            "color": "3eca3d",
+            "children": [
+                {
+                    "name": "Start",
+                    "color": "#6bdb6b",
+                    "children": [
+                        {
+                            "name": "Greet",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Impress",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Chat",
+                            "size": 1,
+                            "color": "#9ced96"
+                        }
+                    ]
+                },
+                {
+                    "name": "Continue",
+                    "color": "#6bdb6b",
+                    "children": [
+                        {
+                            "name": "Develop",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Deepen",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Answer",
+                            "size": 1,
+                            "color": "#9ced96"
+                        }
+                    ]
+                },
+                {
+                    "name": "Control",
+                    "color": "#6bdb6b",
+                    "children": [
+                        {
+                            "name": "Transact",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Negotiate",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Evaluate",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Explain",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Ask",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Laugh",
+                            "size": 1,
+                            "color": "#9ced96"
+                        }
+                    ]
+                },
+                {
+                    "name": "End",
+                    "color": "#6bdb6b",
+                    "children": [
+                        {
+                            "name": "Finish",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Plan",
+                            "size": 1,
+                            "color": "#9ced96"
+                        },
+                        {
+                            "name": "Say goodbye",
+                            "size": 1,
+                            "color": "#9ced96"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "You & US",
+            "color": "#cb3236",
+            "children": [
+                {
+                    "name": "Start Presentation",
+                    "color": "#dc6667",
+                    "children": [
+                        {
+                            "name": "Grab Attention",
+                            "size": 1,
+                            "color": "#ed999a"
+                        },
+                        {
+                            "name": "Present yourself",
+                            "size": 1,
+                            "color": "#ed999a"
+                        },
+                        {
+                            "name": "Impress",
+                            "size": 1,
+                            "color": "#ed999a"
+                        }
+                    ]
+                },
+                {
+                    "name": "Continue a Presentation",
+                    "color": "#dc6667",
+                    "children": [
+                        {
+                            "name": "Explain Idea",
+                            "size": 1,
+                            "color": "#ed999a"
+                        },
+                        {
+                            "name": "Compare & Contrast",
+                            "size": 1,
+                            "color": "#ed999a"
+                        },
+                        {
+                            "name": "Respond & Regain",
+                            "size": 1,
+                            "color": "#ed999a"
+                        }
+                    ]
+                },
+                {
+                    "name": "Engage",
+                    "color": "#dc6667",
+                    "children": [
+                        {
+                            "name": "Direct Attention",
+                            "size": 1,
+                            "color": "#ed999a"
+                        },
+                        {
+                            "name": "Respond to critcism",
+                            "size": 1,
+                            "color": "#ed999a"
+                        },
+                        {
+                            "name": "Laugh",
+                            "size": 1,
+                            "color": "#ed999a"
+                        }
+                    ]
+                },
+                {
+                    "name": "End a Presentation",
+                    "color": "#dc6667",
+                    "children": [
+                        {
+                            "name": "Confirm understanding",
+                            "size": 1,
+                            "color": "#ed999a"
+                        },
+                        {
+                            "name": "Summarize",
+                            "size": 1,
+                            "color": "#ed999a"
+                        },
+                        {
+                            "name": "Give back attention",
+                            "size": 1,
+                            "color": "#ed999a"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

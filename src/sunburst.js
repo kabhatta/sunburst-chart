@@ -16,40 +16,40 @@ export default Kapsule({
   props: {
     width: { default: window.innerWidth },
     height: { default: window.innerHeight },
-    data: { onChange(_, state) { state.needsReparse = true }},
-    children: { default: 'children', onChange(_, state) { state.needsReparse = true }},
-    sort: { onChange(_, state) { state.needsReparse = true }},
+    data: { onChange (_, state) { state.needsReparse = true } },
+    children: { default: 'children', onChange (_, state) { state.needsReparse = true } },
+    sort: { onChange (_, state) { state.needsReparse = true } },
     label: { default: d => d.name },
-    size: { default: 'value', onChange(_, state) { state.needsReparse = true }},
+    size: { default: 'value', onChange (_, state) { state.needsReparse = true } },
     color: { default: d => 'lightgrey' },
     minSliceAngle: { default: .2 },
     maxLevels: {},
     showLabels: { default: true },
     tooltipContent: { default: d => '', triggerUpdate: false },
     tooltipTitle: { default: null, triggerUpdate: false },
-    showTooltip: { default: d => true, triggerUpdate: false},
+    showTooltip: { default: d => true, triggerUpdate: false },
     focusOnNode: {
-      onChange: function(d, state) {
+      onChange: function (d, state) {
         if (d && state.initialised) {
           moveStackToFront(d.__dataNode);
         }
 
-        function moveStackToFront(elD) {
+        function moveStackToFront (elD) {
           state.svg.selectAll('.slice').filter(d => d === elD)
-            .each(function(d) {
+            .each(function (d) {
               this.parentNode.appendChild(this);
               if (d.parent) { moveStackToFront(d.parent); }
             })
         }
       }
     },
-    excludeRoot: { default: false, onChange(_, state) { state.needsReparse = true }},
+    excludeRoot: { default: false, onChange (_, state) { state.needsReparse = true } },
     onClick: { triggerUpdate: false },
     onHover: { triggerUpdate: false }
   },
 
   methods: {
-    _parseData: function(state) {
+    _parseData: function (state) {
       if (state.data) {
         const hierData = d3Hierarchy(state.data, accessorFn(state.children))
           .sum(accessorFn(state.size));
@@ -85,7 +85,7 @@ export default Kapsule({
     onNodeClick: 'onClick'
   },
 
-  init: function(domNode, state) {
+  init: function (domNode, state) {
     state.chartId = Math.round(Math.random() * 1e12); // Unique ID for DOM elems
 
     state.radiusScale = scaleSqrt();
@@ -109,10 +109,10 @@ export default Kapsule({
     // tooltips
     state.tooltip = d3Select('body')
       .append('div')
-          .attr('class', 'sunburst-tooltip');
+      .attr('class', 'sunburst-tooltip');
 
     // tooltip cleanup on unmount
-    domNode.addEventListener ('DOMNodeRemoved', function(e) {
+    domNode.addEventListener('DOMNodeRemoved', function (e) {
       if (e.target === this) { state.tooltip.remove(); }
     });
 
@@ -130,19 +130,19 @@ export default Kapsule({
 
   },
 
-  update: function(state) {
+  update: function (state) {
     if (state.needsReparse) {
       this._parseData();
       state.needsReparse = false;
     }
 
     const maxRadius = (Math.min(state.width, state.height) / 2);
-    state.radiusScale.range([maxRadius * .1, maxRadius]);
+    state.radiusScale.range([maxRadius * .05, maxRadius]);
 
     state.svg
       .style('width', state.width + 'px')
       .style('height', state.height + 'px')
-      .attr('viewBox', `${-state.width/2} ${-state.height/2} ${state.width} ${state.height}`);
+      .attr('viewBox', `${-state.width / 2} ${-state.height / 2} ${state.width} ${state.height}`);
 
     if (!state.layoutData) return;
 
@@ -156,9 +156,9 @@ export default Kapsule({
           .filter(d => // Show only slices with a large enough angle and within the max levels
             d.x1 >= focusD.x0
             && d.x0 <= focusD.x1
-            && (d.x1-d.x0)/(focusD.x1-focusD.x0) > state.minSliceAngle/360
+            && (d.x1 - d.x0) / (focusD.x1 - focusD.x0) > state.minSliceAngle / 360
             && (!state.maxLevels || d.depth - (focusD.depth || (state.excludeRoot ? 1 : 0)) < state.maxLevels)
-            && (d.y0 >=0 || focusD.parent) // hide negative layers on top level
+            && (d.y0 >= 0 || focusD.parent) // hide negative layers on top level
           ),
         d => d.id
       );
@@ -200,7 +200,7 @@ export default Kapsule({
       .on('mouseover', d => {
         d3Event.stopPropagation();
         state.onHover && state.onHover(d.data);
-        
+
         state.tooltip.style('display', state.showTooltip(d.data, d) ? 'inline' : 'none');
         state.tooltip.html(`<div class="tooltip-title">${
           state.tooltipTitle
@@ -209,7 +209,7 @@ export default Kapsule({
               .slice(state.excludeRoot ? 1 : 0)
               .map(d => nameOf(d.data))
               .join(' &rarr; ')
-        }</div>${state.tooltipContent(d.data, d)}`);
+          }</div>${state.tooltipContent(d.data, d)}`);
       })
       .on('mouseout', () => { state.tooltip.style('display', 'none'); });
 
@@ -222,18 +222,18 @@ export default Kapsule({
       .attr('id', d => `hidden-arc-${state.chartId}-${d.id}`);
 
     const label = newSlice.append('text')
-        .attr('class', 'path-label');
+      .attr('class', 'path-label');
 
     // Add white contour
     label.append('textPath')
       .attr('class', 'text-contour')
-      .attr('startOffset','50%')
-      .attr('xlink:href', d => `#hidden-arc-${state.chartId}-${d.id}` );
+      .attr('startOffset', '50%')
+      .attr('xlink:href', d => `#hidden-arc-${state.chartId}-${d.id}`);
 
     label.append('textPath')
       .attr('class', 'text-stroke')
-      .attr('startOffset','50%')
-      .attr('xlink:href', d => `#hidden-arc-${state.chartId}-${d.id}` );
+      .attr('startOffset', '50%')
+      .attr('xlink:href', d => `#hidden-arc-${state.chartId}-${d.id}`);
 
     // Entering + Updating
     const allSlices = slice.merge(newSlice);
@@ -249,7 +249,7 @@ export default Kapsule({
 
     allSlices.select('.path-label')
       .transition(transition)
-        .styleTween('display', d => () => state.showLabels && textFits(d) ? null : 'none');
+      .styleTween('display', d => () => state.showLabels && textFits(d) ? null : 'none');
 
     // Ensure propagation of data to children
     allSlices.selectAll('text.path-label').select('textPath.text-contour');
@@ -260,8 +260,8 @@ export default Kapsule({
 
     //
 
-    function middleArcLine(d) {
-      const halfPi = Math.PI/2;
+    function middleArcLine (d) {
+      const halfPi = Math.PI / 2;
       const angles = [state.angleScale(d.x0) - halfPi, state.angleScale(d.x1) - halfPi];
       const r = Math.max(0, (state.radiusScale(d.y0) + state.radiusScale(d.y1)) / 2);
 
@@ -276,14 +276,14 @@ export default Kapsule({
       return path.toString();
     }
 
-    function textFits(d) {
+    function textFits (d) {
       const deltaAngle = state.angleScale(d.x1) - state.angleScale(d.x0);
       const r = Math.max(0, (state.radiusScale(d.y0) + state.radiusScale(d.y1)) / 2);
       const perimeter = r * deltaAngle;
       return nameOf(d.data).toString().length * CHAR_PX < perimeter;
     }
 
-    function getNodeStack(d) {
+    function getNodeStack (d) {
       const stack = [];
       let curNode = d;
       while (curNode) {
